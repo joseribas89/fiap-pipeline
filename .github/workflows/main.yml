@@ -1,4 +1,4 @@
-name: Generate Passwords
+name: Python
 
 on:
   push:
