@@ -42,4 +42,4 @@ jobs:
       uses: docker://cytopia/bandit
       with:
         entrypoint: bandit
-        args: --recursive generate_passwords.py
+        args: --recursive calculator.py
