@@ -14,7 +14,7 @@ class TestCalculator(unittest.TestCase):
         self.assertNotEqual(password, result)
 
     def test_generate_password(self):
-        passwords = generatePassword([5, 10, 15])
+        self.assertEqual(len(generatePassword([5, 10, 15])), 3)
         self.assertEqual(len(passwords), 3)
         for password in passwords:
             self.assertGreaterEqual(len(password), 3)
