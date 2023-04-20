@@ -38,7 +38,7 @@ jobs:
       with:
         entrypoint: bandit
         args: --recursive calculator.py
-        ignore_failure: true
+        ignore_failure: false
         
   deploy:
     runs-on: ubuntu-latest
