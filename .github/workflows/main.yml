@@ -23,3 +23,7 @@ jobs:
     - name: Generate passwords
       run: |
         python calculator.py
+      
+    - name: Test passwords
+      run: |
+        python test_calculator.py
