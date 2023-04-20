@@ -4,7 +4,7 @@ from calculator import generatePassword
 class TestCalculator(unittest.TestCase):
 
     def test_generate_password(self):
-        passwords = generatePassword(5, 15, 3)
+        passwords = generatePassword(10)
         self.assertEqual(len(passwords), 3)
         for password in passwords:
             self.assertGreaterEqual(len(password), 5)
