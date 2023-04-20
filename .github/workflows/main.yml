@@ -34,7 +34,7 @@ jobs:
         fetch-depth: 0
         
     - name: Analyze code with Bandit
-      uses: docker://cytopia/bandit
+      uses: ioggstream/bandit-report-artifacts@v0.0.2
       with:
         entrypoint: bandit
         args: --recursive calculator.py
