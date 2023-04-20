@@ -39,6 +39,13 @@ jobs:
         project_path: .
         ignore_failure: true
         
+    - name: Security check report artifacts
+      uses: actions/upload-artifact@v1
+      # if: failure()
+      with:
+        name: Security report
+        path: ./security_report.txt
+        
   deploy:
     runs-on: ubuntu-latest
     
