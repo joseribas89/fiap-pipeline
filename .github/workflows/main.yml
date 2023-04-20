@@ -24,10 +24,9 @@ jobs:
       run: |
         python calculator.py
   
-    - name: Commit changes
+    - name: Save passwords to file
       run: |
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git config --global user.name "GitHub Actions"
-        git add .
-        git commit -m "Generated passwords"
+        echo "${{ env.PASSWORDS }}" > passwords.txt
+        git add passwords.txt
+        git commit -m "Add generated passwords to file"
         git push
