@@ -20,10 +20,9 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Generate passwords
+    - name: requirements
       run: |
-          python calculator.py sdist bdist_wheel
-          twine upload dist/*
+          pip install -r requirements.txt
   
   code-analisys:
     runs-on: ubuntu-latest
