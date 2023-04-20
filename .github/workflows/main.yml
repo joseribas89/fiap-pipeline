@@ -24,7 +24,7 @@ jobs:
         
     - name: Start Flask application
       run: |
-        nohup python3 app.py > /dev/null 2>&1 & echo $! > app.pid
+        nohup python app.py > /dev/null 2>&1 & echo $! > app.pid
       
     - name: Test application availability
       run: |
