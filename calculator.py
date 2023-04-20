@@ -1,20 +1,25 @@
 import random
 
-def generatePassword(minLength, maxLength, numPasswords):
+def generatePassword(numPasswords, minLength, maxLength):
+
     alphabet = "abcdefghijklmnopqrstuvwxyz"
-    passwords = [] 
+
+    passwords = []
+
     for i in range(numPasswords):
+
         length = random.randint(minLength, maxLength)
-        password = "" 
+
+        password = ""
         for j in range(length):
             next_letter_index = random.randrange(len(alphabet))
             password = password + alphabet[next_letter_index]
-        
+
         password = replaceWithNumber(password)
         password = replaceWithUppercaseLetter(password)
-        
-        passwords.append(password) 
-    
+
+        passwords.append(password)
+
     return passwords
 
 
@@ -33,14 +38,17 @@ def replaceWithUppercaseLetter(pword):
 
 
 def main():
-    numPasswords = int(input("How many passwords do you want to generate? "))
-    print("Generating " +str(numPasswords)+" passwords")
-    minLength = int(input("Enter the minimum length of the password: "))
-    maxLength = int(input("Enter the maximum length of the password: "))
-    Password = generatePassword(minLength, maxLength, numPasswords)
+
+    numPasswords = 5
+    minLength = 3
+    maxLength = 10
+
+    print("Generating " + str(numPasswords) + " passwords")
+
+    passwords = generatePassword(numPasswords, minLength, maxLength)
+
     for i in range(numPasswords):
-        print ("Password #"+str(i+1)+" = " + Password[i])
+        print("Password #" + str(i+1) + " = " + passwords[i])
 
 
-if __name__ == '__main__':
-    main()
+main()
