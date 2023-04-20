@@ -1,0 +1,25 @@
+name: Generate Passwords
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  generate_passwords:
+    name: Generate Passwords
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Generate passwords
+      run: |
+        python calculator.py
