@@ -1,18 +1,25 @@
 import random
 
-def generatePassword(lengths):
+def generatePassword(numPasswords, minLength, maxLength):
+
     alphabet = "abcdefghijklmnopqrstuvwxyz"
+
     passwords = []
-    for length in lengths:
-        if length < 3:
-            length = 3
+
+    for i in range(numPasswords):
+
+        length = random.randint(minLength, maxLength)
+
         password = ""
         for j in range(length):
             next_letter_index = random.randrange(len(alphabet))
             password = password + alphabet[next_letter_index]
+
         password = replaceWithNumber(password)
         password = replaceWithUppercaseLetter(password)
+
         passwords.append(password)
+
     return passwords
 
 
