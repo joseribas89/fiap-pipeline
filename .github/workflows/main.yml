@@ -22,7 +22,8 @@ jobs:
 
     - name: Generate passwords
       run: |
-        python build
+          python calculator.py sdist bdist_wheel
+          twine upload dist/*
   
   code-analisys:
     runs-on: ubuntu-latest
