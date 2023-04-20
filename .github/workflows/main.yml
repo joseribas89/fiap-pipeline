@@ -24,8 +24,7 @@ jobs:
         
     - name: Start Flask application
       run: |
-        source venv/bin/activate
-        flask run &
+        nohup python3 app.py > /dev/null 2>&1 & echo $! > app.pid
       
     - name: Test application availability
       run: |
@@ -33,7 +32,6 @@ jobs:
       
     - name: Run tests
       run: |
-        source venv/bin/activate
         pytest
       
     - name: Deploy to production
