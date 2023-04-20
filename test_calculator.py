@@ -1,26 +1,16 @@
 import unittest
-from calculator import generatePassword, replaceWithNumber, replaceWithUppercaseLetter
+from calculator import generatePassword
 
 class TestCalculator(unittest.TestCase):
 
-    def test_replace_with_number(self):
-        password = "password"
-        result = replaceWithNumber(password)
-        self.assertNotEqual(password, result)
-
-    def test_replace_with_uppercase_letter(self):
-        password = "password"
-        result = replaceWithUppercaseLetter(password)
-        self.assertNotEqual(password, result)
-
     def test_generate_password(self):
-        minLength = 3
-        maxLength = 12
-        passwords = generatePassword(10), minLength, maxLength)
+        passwords = generatePassword(5, 15, 3)
         self.assertEqual(len(passwords), 3)
         for password in passwords:
-            self.assertGreaterEqual(len(password), minLength)
-            self.assertLessEqual(len(password), maxLength)
+            self.assertGreaterEqual(len(password), 5)
+            self.assertLessEqual(len(password), 15)
+            self.assertTrue(any(char.isdigit() for char in password))
+            self.assertTrue(any(char.isupper() for char in password))
 
 if __name__ == '__main__':
     unittest.main()
