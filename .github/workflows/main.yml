@@ -12,53 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Install Python
-      uses: actions/setup-python@v2
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
       with:
-        python-version: '3.x'
-
-    - name: requirements
-      run: |
-          pip install -r requirements.txt
-  
-  code-analisys:
-    runs-on: ubuntu-latest
-    needs: build
-    
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-        
-    - name: Analyze code with Bandit
-      uses: ioggstream/bandit-report-artifacts@v0.0.2
-      with:
-        project_path: .
-        ignore_failure: true
-        
-    - name: Security check report artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: Security report
-        path: output/security_report.txt
-        
-  deploy:
-    runs-on: ubuntu-latest
-    needs: code-analisys
-    
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-        
-    - name: Generate passwords
-      run: |
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git config --global user.name "GitHub Actions"
-        python calculator.py > passwords.txt
-        git add passwords.txt
-        git commit -m "Add generated passwords to file"
-        git push
+        python-version: '3.10' 
+    - run: python my_script.py
