@@ -16,7 +16,7 @@ class TestCalculator(unittest.TestCase):
     def test_generate_password(self):
         minLength = 3
         maxLength = 12
-        passwords = generatePassword([5, 10, 15], minLength, maxLength)
+       passwords = generatePassword(10), minLength, maxLength)
         self.assertEqual(len(passwords), 3)
         for password in passwords:
             self.assertGreaterEqual(len(password), minLength)
