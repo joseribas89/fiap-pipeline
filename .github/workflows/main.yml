@@ -24,11 +24,7 @@ jobs:
         
     - name: Start Flask application
       run: |
-        python app.py
-      
-    - name: Test application availability
-      run: |
-        while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:5000)" != "200" ]]; do sleep 5; done
+        nohup python app.py > /dev/null 2>&1 &
       
     - name: Run tests
       run: |
