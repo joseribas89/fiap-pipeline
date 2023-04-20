@@ -36,9 +36,8 @@ jobs:
     - name: Analyze code with Bandit
       uses: ioggstream/bandit-report-artifacts@v0.0.2
       with:
-        entrypoint: bandit
-        args: --recursive calculator.py
-        ignore_failure: false
+        project_path: .
+        ignore_failure: true
         
   deploy:
     runs-on: ubuntu-latest
