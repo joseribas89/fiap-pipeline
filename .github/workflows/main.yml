@@ -22,6 +22,21 @@ jobs:
         python -m pip install --upgrade pip
         pip install flask
         
-    - name: Build
+    - name: Start Flask application
       run: |
-        python main.py
+        source venv/bin/activate
+        flask run &
+      
+    - name: Test application availability
+      run: |
+        while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://127.0.0.1:5000)" != "200" ]]; do sleep 5; done
+      
+    - name: Run tests
+      run: |
+        source venv/bin/activate
+        pytest
+      
+    - name: Deploy to production
+      if: github.ref == 'refs/heads/main'
+      run: |
+        echo "Deploying to production..."
